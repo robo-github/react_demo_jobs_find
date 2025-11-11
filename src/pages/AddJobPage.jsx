@@ -1,8 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import { DiScriptcs } from "react-icons/di";
+import { useNavigate } from "react-router-dom";
 
-const AddJobPage = () => {
+const AddJobPage = ({ addJobSubmit }) => {
+  const navigate = useNavigate();
+
   const [title, setTitle] = useState("");
   const [type, setType] = useState("Full-Time");
   const [location, setLocation] = useState("");
@@ -29,6 +31,8 @@ const AddJobPage = () => {
         contactPhone,
       },
     };
+    addJobSubmit(newJob);
+    return navigate("/jobs");
   };
 
   return (
